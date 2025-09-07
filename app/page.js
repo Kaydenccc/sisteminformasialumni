@@ -52,7 +52,7 @@ export default function Home() {
               Profil MTsN 2 Tana Toraja
             </h2>
             <p className="mt-3 text-lg text-neutral-700">
-              &quot; Madrasah Hebat Bermartabat &quot;
+              <strong> Madrasah Hebat Bermartabat </strong>
             </p>
             <p className="mt-6 text-neutral-700 leading-relaxed">
               Madrasah Tsanawiyah Negeri 2 Tana Toraja (MTsN 2 Tana Toraja)
