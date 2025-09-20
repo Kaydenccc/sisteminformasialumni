@@ -1,6 +1,7 @@
 // app/dashboard/admin/alumni/[uid]/page.js
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase/config";
+import Link from "next/link";
 
 export default async function DetailAlumniPage({ params }) {
   const docRef = doc(db, "users", params.uid);
@@ -30,6 +31,12 @@ export default async function DetailAlumniPage({ params }) {
           <DetailItem label="Asal SD/MI" value={data.asal_sekolah} />
           <DetailItem label="Instagram" value={data.instagram || "-"} />
         </div>
+        <Link
+          href={"/cari-alumni"}
+          className="text-cyan-100 bg-blue-700 p-2 rounded-md flex justify-center mt-8"
+        >
+          Kembali
+        </Link>
       </div>
     </div>
   );

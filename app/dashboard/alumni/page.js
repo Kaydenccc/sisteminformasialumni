@@ -121,6 +121,7 @@ export default function AlumniProfile() {
             { label: "NISN", name: "nisn" },
             { label: "Email", name: "email", type: "email" },
             { label: "Angkatan", name: "angkatan" },
+            { label: "Tempat Tanggal Lahir", name: "ttl" },
             { label: "Pekerjaan Saat ini", name: "pekerjaan" },
             { label: "Tempat Kerja", name: "instansi" },
             { label: "Domisili", name: "domisili" },
@@ -136,8 +137,9 @@ export default function AlumniProfile() {
                 type={field.type || "text"}
                 name={field.name}
                 value={userData[field.name] || ""}
+                disabled={field.name === "nisn"}
                 onChange={handleChange}
-                className="w-full p-2 bg-gray-200 rounded"
+                className="w-full p-2 bg-gray-200 rounded disabled:opacity-50"
               />
             </div>
           ))}

@@ -103,10 +103,23 @@ export default function AdminDashboard() {
 
     doc.save("data-alumni.pdf");
   };
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    router.push("/login");
+  };
 
   return (
     <div className="min-h-screen p-8 bg-gray-100">
-      <h1 className="text-2xl font-bold mb-6 text-black">Dashboard Admin</h1>
+      <div className="flex justify-between">
+        <h1 className="text-2xl font-bold mb-6 text-black">Dashboard Admin</h1>
+        <button
+          type="button"
+          onClick={handleLogout}
+          className="bg-gray-700 px-4 mb-6 rounded cursor-pointer border-2 border-gray-200"
+        >
+          Logout
+        </button>
+      </div>
 
       {selectedAlumni ? (
         <EditAlumniForm
