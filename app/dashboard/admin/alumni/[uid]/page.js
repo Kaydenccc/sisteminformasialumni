@@ -32,7 +32,7 @@ export default async function DetailAlumniPage({ params }) {
           <DetailItem label="Instagram" value={data.instagram || "-"} />
         </div>
         <Link
-          href={"/cari-alumni"}
+          href={"/dashboard/admin"}
           className="text-cyan-100 bg-blue-700 p-2 rounded-md flex justify-center mt-8"
         >
           Kembali
