@@ -111,7 +111,7 @@ export default function AddAlumniForm({ onSuccess, onClose }) {
         <button
           type="button"
           onClick={onClose}
-          className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+          className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 text-black"
         >
           Batal
         </button>

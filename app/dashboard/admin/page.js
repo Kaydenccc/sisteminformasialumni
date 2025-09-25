@@ -109,7 +109,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="min-h-screen p-8 bg-gray-100">
+    <div className="min-h-screen p-8 bg-gray-100 overflow-hidden">
       <div className="flex justify-between">
         <h1 className="text-2xl font-bold mb-6 text-black">Dashboard Admin</h1>
         <button
@@ -145,107 +145,108 @@ export default function AdminDashboard() {
               placeholder="Cari nama atau email"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="p-2 border rounded w-64 text-black"
+              className="p-2 border rounded md:w-64 text-black w-full"
             />
             <input
               type="text"
               placeholder="Filter angkatan"
               value={filterAngkatan}
               onChange={(e) => setFilterAngkatan(e.target.value)}
-              className="p-2 border rounded w-40 text-black"
+              className="p-2 border rounded md:w-40 text-black w-full"
             />
             <input
               type="text"
               placeholder="Filter instansi"
               value={filterInstansi}
               onChange={(e) => setFilterInstansi(e.target.value)}
-              className="p-2 border rounded w-40 text-black"
+              className="p-2 border rounded md:w-40 text-black w-full"
             />
             <input
               type="text"
               placeholder="Filter domisili"
               value={filterDomisili}
               onChange={(e) => setFilterDomisili(e.target.value)}
-              className="p-2 border rounded w-40 text-black"
+              className="p-2 border rounded md:w-40 text-black w-full"
             />
           </div>
 
           {/* Tabel Alumni */}
-          <table className="w-full border bg-white rounded-xl shadow-md">
-            <thead className="bg-blue-600 text-white">
-              <tr>
-                <th className="p-3 text-left">Nama</th>
-                <th className="p-3 text-left">NISN</th>
-                <th className="p-3 text-left">Angkatan</th>
-                <th className="p-3 text-left">Instansi</th>
-                <th className="p-3 text-left">Aksi</th>
-              </tr>
-            </thead>
-            <tbody>
-              {paginatedAlumni.map((alumni) => (
-                <tr
-                  key={alumni.uid}
-                  className="border-t text-black hover:bg-gray-300 cursor-pointer"
-                >
-                  <td
-                    className="p-3"
-                    onClick={() =>
-                      router.push(`/dashboard/admin/alumni/${alumni.uid}`)
-                    }
-                  >
-                    {alumni.fullName}
-                  </td>
-                  <td
-                    className="p-3"
-                    onClick={() =>
-                      router.push(`/dashboard/admin/alumni/${alumni.uid}`)
-                    }
-                  >
-                    {alumni.nisn}
-                  </td>
-                  <td
-                    className="p-3"
-                    onClick={() =>
-                      router.push(`/dashboard/admin/alumni/${alumni.uid}`)
-                    }
-                  >
-                    {alumni.angkatan}
-                  </td>
-                  <td
-                    className="p-3"
-                    onClick={() =>
-                      router.push(`/dashboard/admin/alumni/${alumni.uid}`)
-                    }
-                  >
-                    {alumni.instansi}
-                  </td>
-                  <td className="p-3">
-                    <button
-                      onClick={() => setSelectedAlumni(alumni)}
-                      className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
-                    >
-                      Edit
-                    </button>
-                  </td>
-                </tr>
-              ))}
-              {filteredAlumni.length === 0 && (
+          <div className="w-full overflow-x-auto rounded-xl shadow-md">
+            <table className="w-full border bg-white rounded-xl shadow-md overflow-x-scroll">
+              <thead className="bg-blue-600 text-white">
                 <tr>
-                  <td colSpan="5" className="p-4 text-center text-gray-500">
-                    Tidak ada data alumni.
-                  </td>
+                  <th className="p-3 text-left">Nama</th>
+                  <th className="p-3 text-left">NISN</th>
+                  <th className="p-3 text-left">Angkatan</th>
+                  <th className="p-3 text-left">Instansi</th>
+                  <th className="p-3 text-left">Aksi</th>
                 </tr>
-              )}
-            </tbody>
-          </table>
-
+              </thead>
+              <tbody>
+                {paginatedAlumni.map((alumni) => (
+                  <tr
+                    key={alumni.uid}
+                    className="border-t text-black hover:bg-gray-300 cursor-pointer"
+                  >
+                    <td
+                      className="p-3"
+                      onClick={() =>
+                        router.push(`/dashboard/admin/alumni/${alumni.uid}`)
+                      }
+                    >
+                      {alumni.fullName}
+                    </td>
+                    <td
+                      className="p-3"
+                      onClick={() =>
+                        router.push(`/dashboard/admin/alumni/${alumni.uid}`)
+                      }
+                    >
+                      {alumni.nisn}
+                    </td>
+                    <td
+                      className="p-3"
+                      onClick={() =>
+                        router.push(`/dashboard/admin/alumni/${alumni.uid}`)
+                      }
+                    >
+                      {alumni.angkatan}
+                    </td>
+                    <td
+                      className="p-3"
+                      onClick={() =>
+                        router.push(`/dashboard/admin/alumni/${alumni.uid}`)
+                      }
+                    >
+                      {alumni.instansi}
+                    </td>
+                    <td className="p-3">
+                      <button
+                        onClick={() => setSelectedAlumni(alumni)}
+                        className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                      >
+                        Edit
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+                {filteredAlumni.length === 0 && (
+                  <tr>
+                    <td colSpan="5" className="p-4 text-center text-gray-500">
+                      Tidak ada data alumni.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
           {/* 🔹 Pagination Controls */}
           {totalPages > 1 && (
             <div className="flex justify-center items-center gap-2 mt-4">
               <button
                 onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
                 disabled={currentPage === 1}
-                className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50"
+                className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50 text-black"
               >
                 Prev
               </button>
@@ -257,7 +258,7 @@ export default function AdminDashboard() {
                   setCurrentPage((p) => Math.min(p + 1, totalPages))
                 }
                 disabled={currentPage === totalPages}
-                className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50"
+                className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50 text-black"
               >
                 Next
               </button>
