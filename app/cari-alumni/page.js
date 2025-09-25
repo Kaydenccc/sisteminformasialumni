@@ -267,7 +267,7 @@ export default function AdminDashboard() {
                 <button
                   onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
                   disabled={currentPage === 1}
-                  className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50"
+                  className="px-3 py-1 bg-white rounded disabled:opacity-50 text-black "
                 >
                   Prev
                 </button>
@@ -279,7 +279,7 @@ export default function AdminDashboard() {
                     setCurrentPage((p) => Math.min(p + 1, totalPages))
                   }
                   disabled={currentPage === totalPages}
-                  className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50"
+                  className="px-3 py-1 bg-white rounded disabled:opacity-50 text-black "
                 >
                   Next
                 </button>
